@@ -290,3 +290,14 @@ describe("survival engine", () => {
     expect(controller.read()).toBe(-1);
   });
 });
+
+it("places reused lobby slots in their stable numeric order", () => {
+  const ps = players(4);
+  const e = new GameEngine([ps[0], ps[2], ps[3], ps[1]], "multiplayer");
+  expect(e.state.paddles.map((p) => p.playerId)).toEqual([
+    "p1",
+    "p2",
+    "p3",
+    "p4",
+  ]);
+});

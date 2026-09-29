@@ -29,7 +29,9 @@ export class GameEngine {
       tick: 0,
       time: 0,
       phase: "playing",
-      players: structuredClone(players).map((p) => ({ ...p, lives: 5 })),
+      players: structuredClone(players)
+        .sort((a, b) => a.slot - b.slot)
+        .map((p) => ({ ...p, lives: 5 })),
       paddles: [],
       arenas: [],
       winner: null,
